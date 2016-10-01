@@ -8,7 +8,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\Users;
+use app\models\Contacts;
+use app\models\ContactsQuery;
 
 class SiteController extends Controller
 {
@@ -61,8 +62,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $model = Users::find()->all();
-        return $this->render('index');
+        //$model = Users::find()->all();
+      /*  $contacts = Contacts::find()->where("id=2")->one();
+        var_dump($contacts->groups);
+        die;*/
+        return $this->render('index',['contacts'=>$contacts]);
     }
 
     /**

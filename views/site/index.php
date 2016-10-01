@@ -1,20 +1,45 @@
 <?php
-
+use yii\Helpers\Html;
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'My Contact List Hohoho';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Контакты</div>
+        <?php if (empty($contacts)): ?>
+            <div class="panel-body">
+                <p>Контактов не найдено</p>
+            </div>
+        <?php else: ?>
+            <!-- List group -->
+            <ul class="list-group">
+                <?php foreach ($contacts as $key => $quest): ?>
+                    <li class="list-group-item">
+                        <?php echo Html::encode($quest->name); ?>:
+                        <?php echo Html::encode($quest->email); ?>
+                        <?php echo Html::encode($quest->phone_number); ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+    </div>
+
+
+    <!--<div class="jumbotron">
         <h1>Congratulations!</h1>
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
+-->
 
-    <div class="body-content">
+
+    <!--<div class="body-content">
 
         <div class="row">
             <div class="col-lg-4">
@@ -49,5 +74,5 @@ $this->title = 'My Yii Application';
             </div>
         </div>
 
-    </div>
+    </div>-->
 </div>

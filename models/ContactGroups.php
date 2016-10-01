@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
+use app\models\Contact;
+
 
 /**
  * This is the model class for table "contact_groups".
@@ -12,6 +15,12 @@ use Yii;
  */
 class ContactGroups extends \yii\db\ActiveRecord
 {
+
+ /*   public function getContacts(){
+
+        return $this->hasMany(Contact::classname(),['id','user_id']);
+    }
+      */
     /**
      * @inheritdoc
      */

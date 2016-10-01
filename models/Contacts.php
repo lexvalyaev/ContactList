@@ -3,9 +3,11 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
+use app\models\ContactGroups;
 
 /**
- * This is the model class for table "contacts".
+ * This is the model class for table "{{%contacts}}".
  *
  * @property integer $id
  * @property string $name
@@ -17,12 +19,22 @@ use Yii;
  */
 class Contacts extends \yii\db\ActiveRecord
 {
+
+    public function getGroups()
+    {
+
+            return $this->hasMany(ContactGroups::className(), ['id' => 'contact_id'])
+                ->viaTable('contacts_and_groups', ['group_id' => 'id']);
+
+
+    }
+
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'contacts';
+        return '{{%contacts}}';
     }
 
     /**
@@ -52,5 +64,14 @@ class Contacts extends \yii\db\ActiveRecord
             'birthday' => 'Birthday',
             'user_id' => 'User ID',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     * @return ContactsQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new ContactsQuery(get_called_class());
     }
 }
