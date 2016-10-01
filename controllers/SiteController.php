@@ -63,8 +63,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
         //$model = Users::find()->all();
-      /*  $contacts = Contacts::find()->where("id=2")->one();
-        var_dump($contacts->groups);
+        $contacts = Contacts::find()->one();
+        /*var_dump($contacts->groups);
         die;*/
         return $this->render('index',['contacts'=>$contacts]);
     }
