@@ -44,14 +44,17 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<module>/<controller>/<action>' => '<module>/<controller>/<action>',
+                '<controller>/<action>' => '<controller>/<action>',
+                '<action>' => 'site/<action>'
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

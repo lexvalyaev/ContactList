@@ -20,14 +20,14 @@ class ContactsController extends Controller
     public function behaviors()
     {
         $return = parent::behaviors();
-        $behaviors = [];/* [
+        $behaviors = []; [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
             ],
-        ];*/
+        ];
 
         return array_merge($return,$behaviors);
 

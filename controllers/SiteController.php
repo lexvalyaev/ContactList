@@ -64,7 +64,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $faker = \Faker\Factory::create();
+        /*$faker = \Faker\Factory::create();
         $contact = new Contacts();
         $contact->name = $faker->name;
         $contact->phone_number=$faker->phoneNumber;
@@ -72,7 +72,7 @@ class SiteController extends Controller
         $contact->birthday = $faker->dateTime;
         $contact->second_name=$faker->lastName;
         $contact->user_id='3';
-        $contact->save();
+        $contact->save();*/
 
         //$model = Users::find()->all();
         $contacts = Contacts::find()->all();

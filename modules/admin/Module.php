@@ -19,6 +19,7 @@ class Module extends \yii\base\Module
     {
         parent::init();
 
+        $this->layout = "@app/modules/admin/views/layouts/main.php";
         // custom initialization code goes here
     }
 }
