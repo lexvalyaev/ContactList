@@ -9,6 +9,9 @@ $this->title = 'My Contact List Hohoho';
 
     <div class="panel panel-default">
         <!-- Default panel contents -->
+        <form>
+            <button>...</button>
+        </form>
         <div class="panel-heading">Контакты</div>
         <?php if (empty($contacts)): ?>
             <div class="panel-body">
@@ -16,15 +19,33 @@ $this->title = 'My Contact List Hohoho';
             </div>
         <?php else: ?>
             <!-- List group -->
-            <ul class="list-group">
-                <?php foreach ($contacts as $key => $quest): ?>
-                    <li class="list-group-item">
-                        <?php echo Html::encode($quest->name); ?>:
-                        <?php echo Html::encode($quest->email); ?>
-                        <?php echo Html::encode($quest->phone_number); ?>
-                    </li>
+            <table class="table">
+                <tr bgcolor="#adff2f">
+                    <td>Имя</td>
+                    <td>Почта</td>
+                    <td>Телефон</td>
+                    <td>День рождения</td>
+                </tr>
+                <?php foreach ($contacts as $key => $quest ):?>
+                <tr>
+                    <td><?php echo Html::encode($quest->name); ?></td>
+                    <td><?php echo Html::encode($quest->email); ?></td>
+                    <td><?php echo Html::encode($quest->phone_number); ?></td>
+                    <td><?php echo Html::encode($quest->birthday); ?></td>
+                </tr>
                 <?php endforeach; ?>
-            </ul>
+
+            </table>
+
+         <!--   <ul class="list-group">
+                <?php /*foreach ($contacts as $key => $quest): */?>
+                    <li class="list-group-item">
+                        <?php /*echo (Html::encode($quest->name)); */?>:
+                        <?php /*echo Html::encode($quest->email); */?>
+                        <?php /*echo Html::encode($quest->phone_number); */?>
+                    </li>
+                <?php /*endforeach; */?>
+            </ul>-->
         <?php endif; ?>
     </div>
 

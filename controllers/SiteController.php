@@ -11,6 +11,8 @@ use app\models\ContactForm;
 use app\models\Contacts;
 use app\models\ContactsQuery;
 
+
+
 class SiteController extends Controller
 {
     /**
@@ -62,8 +64,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $faker = \Faker\Factory::create();
+        $contact = new Contacts();
+        $contact->name = $faker->name;
+        $contact->phone_number=$faker->phoneNumber;
+        $contact->email=$faker->email;
+        $contact->birthday = $faker->dateTime;
+        $contact->second_name=$faker->lastName;
+        $contact->user_id='3';
+        $contact->save();
+
         //$model = Users::find()->all();
-        $contacts = Contacts::find()->one();
+        $contacts = Contacts::find()->all();
         /*var_dump($contacts->groups);
         die;*/
         return $this->render('index',['contacts'=>$contacts]);
