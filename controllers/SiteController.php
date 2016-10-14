@@ -65,8 +65,21 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        $contacts = Contacts::find()->all();
-        return $this->render('index',['contacts'=>$contacts]);
+        if (!Yii::$app->user->isGuest){
+
+
+        $contacts = Contacts::find()->where();
+        return $this->render('index', ['contacts' => $contacts]);
+    }
+        else{
+
+            $model = new LoginForm();
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                return $this->goBack();
+            }
+            return $this->render('login', compact('model'));
+        }
+
     }
 
     /**
