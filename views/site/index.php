@@ -9,9 +9,6 @@ $this->title = 'My Contact List Hohoho';
 
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <form>
-            <button>...</button>
-        </form>
         <div class="panel-heading">Контакты</div>
         <?php if (empty($contacts)): ?>
             <div class="panel-body">

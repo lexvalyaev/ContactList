@@ -17,6 +17,27 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     /**
      * @inheritdoc
      */
+    public function beforeSave($insert)
+
+    {
+
+        if (parent::beforeSave($insert)) {
+
+            if ($this->isNewRecord) {
+
+                $this->password = \Yii::$app->security->generatePasswordHash($this->password);
+
+            }
+
+            return true;
+
+        }
+
+        return false;
+
+    }
+
+
     public static function tableName()
     {
         return 'users';

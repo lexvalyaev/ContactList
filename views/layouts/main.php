@@ -57,10 +57,20 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
+       <!-- <?/*= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= $content ?>
+        ]) */?>
+        --><?/*= $content */?>
+
+        <div class="authorization-indicator">
+            <?php if (Yii::$app->user->isGuest):?>
+                .<?= Html::tag('span', 'guest');?>
+<?= Html::a('login', '/site/login');?>
+<?php else:?>
+                <?= Html::tag('span', Yii::$app->user->identity->username);?>
+<?= Html::a('logout', '/site/logout');?>
+<?php endif;?>
+        </div>
     </div>
 </div>
 
