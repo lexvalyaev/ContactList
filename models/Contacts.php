@@ -29,6 +29,11 @@ class Contacts extends \yii\db\ActiveRecord
 
     }
 
+    public function getUsers()
+    {
+        return $this->hasOne(Users::className(),['id'=>'user_id']);
+    }
+
     /**
      * @inheritdoc
      */

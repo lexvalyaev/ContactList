@@ -37,6 +37,10 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     }
 
+    public function getContacts(){
+        return $this->hasMany(Contacts::className(),['user_id'=>'id']);
+    }
+
 
     public static function tableName()
     {
