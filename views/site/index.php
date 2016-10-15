@@ -1,5 +1,6 @@
 <?php
 use yii\Helpers\Html;
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = 'My Contact List Hohoho';
@@ -16,6 +17,7 @@ $this->title = 'My Contact List Hohoho';
             </div>
         <?php else: ?>
             <!-- List group -->
+            <a href="<?php echo Url::to(['contacts/create']) ?>">Добавить</a>
             <table class="table">
                 <tr bgcolor="#adff2f">
                     <td>Имя</td>
@@ -29,6 +31,9 @@ $this->title = 'My Contact List Hohoho';
                     <td><?php echo Html::encode($quest->email); ?></td>
                     <td><?php echo Html::encode($quest->phone_number); ?></td>
                     <td><?php echo Html::encode($quest->birthday); ?></td>
+                    <td><a href="<?php echo Url::to(['contacts/update','id'=>$quest->id])?>">упдейтэ</a></td>
+                    <td><a href="<?php echo Url::to(['contacts/delete','id'=>$quest->id])?>">делитэ</a></td>
+
                 </tr>
                 <?php endforeach; ?>
 
