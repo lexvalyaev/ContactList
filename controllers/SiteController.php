@@ -9,7 +9,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Contacts;
-
+use app\models\Users;
 
 
 
@@ -23,10 +23,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout','index'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                      //  'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -65,22 +65,13 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        if (!Yii::$app->user->isGuest){
+       $contacts = Users::findOne(Yii::$app->user->getId())->contacts;
 
-
-        $contacts = Contacts::find()->where();
-        return $this->render('index', ['contacts' => $contacts]);
+        return $this->render('index',['contacts'=>$contacts]);
     }
-        else{
 
-            $model = new LoginForm();
-            if ($model->load(Yii::$app->request->post()) && $model->login()) {
-                return $this->goBack();
-            }
-            return $this->render('login', compact('model'));
-        }
 
-    }
+
 
     /**
      * Login action.
