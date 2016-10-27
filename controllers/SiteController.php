@@ -66,7 +66,10 @@ class SiteController extends Controller
     {
        $contacts = Users::findOne(Yii::$app->user->getId())->contacts;
        $dataProvider =new ActiveDataProvider([
-           'query' => Users::findOne(Yii::$app->user->getId())->contacts,
+           'query' => Contacts::find()->where(['user_id'=>Yii::$app->user->getId()]),
+           'pagination' => [
+               'pagesize' => 10,
+           ],
 
            ]);
 

@@ -25,10 +25,32 @@ $this->title = 'My Contact List Hohoho';
 
             echo GridView::widget([
                 'dataProvider' => $dataProvider,
-                'columns'=>[
-                    'Name',
 
-                ]
+                'columns' => [
+                    'name',
+                    'second_name',
+                    'phone_number',
+                    'email',
+                    'birthday',
+                    [
+                        'class' => 'yii\grid\ActionColumn',
+                        'header'=>'Действия',
+                        'template' => '{update} {delete}',
+                        /*'buttons' => [
+                            'update' => function ($url,$model) {
+                                return Html::a(
+                                    '<span class="glyphicon glyphicon-screenshot"></span>',
+                                    $url);
+                            },
+
+                        ],*/
+                    ],
+
+                ],
+                'layout' => '{summary}{items}{pager}',
+
+
+
             ]);
             ?>
            <!-- <table class="table">
