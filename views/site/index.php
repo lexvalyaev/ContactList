@@ -36,14 +36,19 @@ $this->title = 'My Contact List Hohoho';
                         'class' => 'yii\grid\ActionColumn',
                         'header'=>'Действия',
                         'template' => '{update} {delete}',
-                        /*'buttons' => [
+                        'buttons' => [
                             'update' => function ($url,$model) {
                                 return Html::a(
-                                    '<span class="glyphicon glyphicon-screenshot"></span>',
-                                    $url);
+                                    '<span class="glyphicon glyphicon-pencil"></span>',
+                                    Url::to(['contacts/update','id'=>$model['id']]));
+                            },
+                            'delete' => function ($url,$model) {
+                                return Html::a(
+                                    '<span class="glyphicon glyphicon-trash"></span>',
+                                    Url::to(['contacts/delete','id'=>$model['id']]));
                             },
 
-                        ],*/
+                        ],
                     ],
 
                 ],
