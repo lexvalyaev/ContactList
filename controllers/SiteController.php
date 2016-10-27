@@ -10,7 +10,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Contacts;
 use app\models\Users;
-
+use yii\data\ActiveDataProvider;
 
 
 class SiteController extends Controller
@@ -64,10 +64,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-
        $contacts = Users::findOne(Yii::$app->user->getId())->contacts;
+       $dataProvider =new ActiveDataProvider([
+           'query' => Users::findOne(Yii::$app->user->getId())->contacts,
 
-        return $this->render('index',['contacts'=>$contacts]);
+           ]);
+
+
+
+        return $this->render('index',['contacts'=>$contacts,'dataProvider'=>$dataProvider]);
     }
 
 

@@ -1,6 +1,8 @@
 <?php
 use yii\Helpers\Html;
 use yii\helpers\Url;
+use yii\grid\GridView;
+use yii\data\ActiveDataProvider;
 /* @var $this yii\web\View */
 
 $this->title = 'My Contact List Hohoho';
@@ -18,26 +20,43 @@ $this->title = 'My Contact List Hohoho';
         <?php else: ?>
             <!-- List group -->
             <a href="<?php echo Url::to(['contacts/create']) ?>">Добавить</a>
-            <table class="table">
+
+            <?php
+
+            echo GridView::widget([
+                'dataProvider' => $dataProvider,
+                'columns'=>[
+                    'Name',
+
+                ]
+            ]);
+            ?>
+           <!-- <table class="table">
                 <tr bgcolor="#adff2f">
                     <td>Имя</td>
                     <td>Почта</td>
                     <td>Телефон</td>
                     <td>День рождения</td>
+                    <td>Группа</td>
                 </tr>
-                <?php foreach ($contacts as $key => $quest ):?>
+                <?php /*foreach ($contacts as $key => $quest ):*/?>
                 <tr>
-                    <td><?php echo Html::encode($quest->name); ?></td>
-                    <td><?php echo Html::encode($quest->email); ?></td>
-                    <td><?php echo Html::encode($quest->phone_number); ?></td>
-                    <td><?php echo Html::encode($quest->birthday); ?></td>
-                    <td><a href="<?php echo Url::to(['contacts/update','id'=>$quest->id])?>">упдейтэ</a></td>
-                    <td><a href="<?php echo Url::to(['contacts/delete','id'=>$quest->id])?>">делитэ</a></td>
+                    <td><?php /*echo Html::encode($quest->name); */?></td>
+                    <td><?php /*echo Html::encode($quest->email); */?></td>
+                    <td><?php /*echo Html::encode($quest->phone_number); */?></td>
+                    <td><?php /*echo Html::encode($quest->birthday); */?></td>
+                    <td><?php /*foreach ($quest->groups as $group):  */?>
+                         <?php /*echo Html::encode($group->name); */?>
+                            <br>
+                        <?php /*endforeach; */?>
+                    </td>
+                    <td><a href="<?php /*echo Url::to(['contacts/update','id'=>$quest->id])*/?>">упдейтэ</a></td>
+                    <td><a href="<?php /*echo Url::to(['contacts/delete','id'=>$quest->id])*/?>">делитэ</a></td>
 
                 </tr>
-                <?php endforeach; ?>
+                <?php /*endforeach; */?>
 
-            </table>
+            </table>-->
 
          <!--   <ul class="list-group">
                 <?php /*foreach ($contacts as $key => $quest): */?>

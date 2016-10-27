@@ -23,8 +23,8 @@ class Contacts extends \yii\db\ActiveRecord
     public function getGroups()
     {
 
-            return $this->hasMany(ContactGroups::className(), ['id' => 'contact_id'])
-                ->viaTable('contacts_and_groups', ['group_id' => 'id']);
+            return $this->hasMany(ContactGroups::className(), ['id' => 'group_id'])
+                ->viaTable('contacts_and_groups', ['contact_id' => 'id']);
 
 
     }
