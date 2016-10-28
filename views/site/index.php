@@ -27,11 +27,19 @@ $this->title = 'My Contact List Hohoho';
                 'dataProvider' => $dataProvider,
 
                 'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
+                    [
+                        'class' => 'yii\grid\CheckboxColumn',
+
+                    ],
                     'name',
                     'second_name',
                     'phone_number',
                     'email',
                     'birthday',
+                    'groups',
+
+
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'header'=>'Действия',
